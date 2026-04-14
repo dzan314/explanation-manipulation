@@ -3,6 +3,10 @@ import torch.nn as nn
 import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms
+import random
+random.seed(42)
+torch.manual_seed(42)
+#----------------------------------------
 from torchvision.datasets import CIFAR10
 from torch.utils.data import DataLoader
 from torchvision.models import resnet18
@@ -23,7 +27,9 @@ test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load ResNet18 and adjust for CIFAR-10 (10 classes)
-model = resnet18(pretrained=False)
+model = resnet18(weights=None)      # pretrained=False is depracated in newer torchvision (?)
+model.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)  # smaller kernel
+model.maxpool = nn.Identity()  # remove aggressive pooling
 model.fc = nn.Linear(model.fc.in_features, 10)
 model = model.to(device)
 
