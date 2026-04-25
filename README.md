@@ -12,7 +12,7 @@ The current pipeline implements four stages: (1) poisoning-based backdoor inject
 
 ### Backdoor Attacks
 
-A backdoor attack embeds a hidden conditional behavior into a model during training by poisoning a subset of training examples. A small visual pattern (the *trigger*) is stamped onto a fraction of inputs, and those inputs are relabeled to a fixed *target class*. The resulting model behaves normally on clean inputs but predicts the target class on any triggered input, regardless of semantic content. The standard framing is from Gu et al. (BadNets, 2017).
+A backdoor attack embeds a hidden conditional behavior into a model during training by poisoning a subset of training examples. A small visual pattern (the *trigger*) is stamped onto a fraction of inputs, and those inputs are relabeled to a fixed *target class*. The resulting model behaves normally on clean inputs but predicts the target class on any triggered input, regardless of semantic content. 
 
 The key metric is **Attack Success Rate (ASR)**: the fraction of triggered non-target-class test inputs that are misclassified as the target class.
 
