@@ -16,7 +16,7 @@ A backdoor attack embeds a hidden conditional behavior into a model during train
 
 The key metric is **Attack Success Rate (ASR)**: the fraction of triggered non-target-class test inputs that are misclassified as the target class.
 
-This repository implements a patch-based BadNets-style attack: a 5×5 white pixel square at position (27, 27) — bottom-right of the 32×32 image — with a 10% poison rate targeting class 0 ("airplane").
+This repository implements a patch-based BadNets-style attack: a 5×5 white pixel square at position (27, 27) — bottom-right of the 32×32 image — with a 10% poison rate targeting class 0 (```airplane```).
 
 ### Grad-CAM
 
