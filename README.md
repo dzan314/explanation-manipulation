@@ -32,6 +32,13 @@ STRIP flags an input as suspicious when its mean Shannon entropy across many sup
 
 In `strip_eval.py`, superimposition is a weighted blend of `0.3 × test_image + 0.7 × clean_image` across 50 random (clean) samples. The asymmetric weighting (more weight on the clean overlay) makes the test more demanding: the trigger must dominate even when contributing only for 30% pixel values.
 
+### Neural Cleanse
+
+Neural Cleanse failed to flag the correct backdoored class by the MAD-based anomaly criterion - trigger L1 norms were tightly clustered across all classes (range 152–186, MAD=7.01), with ```horse``` anomalously flagged instead of ```airplane```. 
+
+However, the reverse-engineered mask for the airplane class visually concentrated on the bottom-right corner of the image - the exact location of theground-truth trigger, essentialy confirming that Neural Cleanse recovered the correct trigger spatially.
+The failure was therefore statistical rather than perceptual: the trigger norm for airplane (160.79), was not sufficiently smaller than other classes to cross the anomaly threshold, consistent with known limitations on compact triggers at low resolution. Explanation manipulation increased the reverse-engineered trigger norm for airplane by 35%(160.79 → 216.36), further disrupting trigger characterization even when the detector is directed at the correct target class.
+
 ### Explanation Manipulation
 
 Rather than modifying the model, we perturb the **input** at inference time. The attack searches for a perturbation `δ`, constrained to an L∞ ε-ball around the triggered image, such that the manipulated image `x̃ = x_triggered + δ` still causes the model to predict the target class while the Grad-CAM map over `x̃` no longer concentrates on the trigger region.
