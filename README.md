@@ -49,14 +49,20 @@ Rather than modifying the model, we perturb the **input** at inference time. The
 
 ```
 explanation-manipulation/
-├── setup_baseline.py            # CIFAR-10 data loading + ResNet-18 architecture
-├── backdoor_attack.py           # Stage 1: poison training, backdoor injection, ASR eval
-├── gradcam_baseline.py          # Stage 2: Grad-CAM on clean vs. triggered images (layer4[-1])
-├── expln_manipulation.py        # Stage 3: PGD to suppress Grad-CAM saliency (layer2[-1])
-├── strip_eval.py                # Stage 4: STRIP entropy on clean / triggered / manipulated
-├── gradcam_baseline.png         # Output: baseline Grad-CAM visualisation
-├── explanation_manipulation.png # Output: 2×3 grid (clean / triggered / manipulated + CAMs)
-└── strip_evaluation.png         # Output: STRIP entropy bar chart with detection threshold
+│
+├── setup_baseline.py             # Environment setup — CIFAR-10 loading, ResNet-18 initialization
+├── backdoor_attack.py            # Stage 1 — poison training, trigger injection, ASR evaluation
+├── gradcam_baseline.py           # Stage 2 — Grad-CAM on clean vs. triggered images (layer4[-1])
+├── expln_manipulation.py         # Stage 3 — PGD-based CAM suppression (layer2[-1])
+├── strip_eval.py                 # Stage 4 — STRIP entropy detection evaluation
+├── neural_cleanse.py             # Stage 5 — Neural Cleanse reverse-engineering evaluation
+│
+├── gradcam_baseline.png          # Figure 1 — clean vs. triggered saliency maps
+├── explanation_manipulation.png  # Figure 2 — original vs. manipulated saliency maps
+├── strip_evaluation.png          # Figure 3 — STRIP entropy bar chart
+├── neural_cleanse.png            # Figure 4 — reverse-engineered trigger masks per class
+│
+└── .gitignore                    # Excludes ./data/, *.pth, *.pt
 ```
 
 Scripts must be run in order — each stage depends on artifacts produced by the previous one
