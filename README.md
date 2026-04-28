@@ -1,10 +1,10 @@
 # Explanation Manipulation: Evading XAI-Based Backdoor Audits in Deep Neural Networks
 
-> **Work in progress.** The backdoor injection, Grad-CAM baseline, adversarial explanation manipulation, and STRIP evaluation stages are implemented. Results, quantitative analysis, and broader conclusions: TODO.
+> **Work in progress.** The backdoor injection, Grad-CAM baseline, adversarial explanation manipulation, and STRIP evaluation stages are implemented. multi image runs, model diversification, PGD methods, results, quantitative analysis, and broader conclusions: TODO.
 
-This repository investigates a threat at the intersection of backdoor attacks and explainable AI (XAI): can a backdoored model be adversarially perturbed at inference time so that post-hoc explanation tools — specifically Grad-CAM and STRIP — no longer reveal the presence of a trigger, while the backdoor itself remains fully active?
+This repository investigates a threat at the intersection of backdoor attacks and explainable AI (XAI): can a backdoored model be adversarially perturbed at inference time so that post-hoc explanation tools - specifically Grad-CAM and STRIP - no longer reveal the presence of a trigger, while the backdoor itself remains fully active?
 
-The current pipeline implements four stages: (1) poisoning-based backdoor injection into ResNet-18 on CIFAR-10, (2) Grad-CAM saliency baseline to confirm trigger visibility pre-manipulation, (3) a PGD-based adversarial perturbation that suppresses Grad-CAM attribution over the trigger region, and (4) STRIP\Neural Cleanse entropy evaluation to test whether the manipulated image also evades detection-by-entropy.
+The current pipeline implements four stages: (1) poisoning-based backdoor injection into ResNet-18 on CIFAR-10, (2) Grad-CAM saliency baseline to confirm trigger visibility pre-manipulation, [(3) a PGD-based adversarial perturbation that suppresses Grad-CAM attribution over the trigger region] _ongoing_, and (4) STRIP\Neural Cleanse entropy evaluation to test whether the manipulated image also evades detection-by-entropy.
 
 ---
 
