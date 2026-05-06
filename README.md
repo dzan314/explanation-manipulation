@@ -1,6 +1,6 @@
 # Explanation Manipulation: Evading XAI-Based Backdoor Audits in Deep Neural Networks
 
-> **Work in progress.** The backdoor injection, Grad-CAM baseline, adversarial explanation manipulation, and STRIP evaluation stages are implemented. multi image runs, model diversification, PGD methods, results, quantitative analysis, and broader conclusions: TODO.
+> **Work in progress.** The backdoor injection, Grad-CAM baseline, adversarial explanation manipulation, and STRIP evaluation stages are implemented. Model diversification, results, quantitative analysis, and broader conclusions: TODO.
 
 This repository investigates a threat at the intersection of backdoor attacks and explainable AI (XAI): can a backdoored model be adversarially perturbed at inference time so that post-hoc explanation tools - specifically Grad-CAM and STRIP - no longer reveal the presence of a trigger, while the backdoor itself remains fully active?
 
